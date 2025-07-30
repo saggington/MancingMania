@@ -13,8 +13,8 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI answerText;
     private string text = "";
 
-    private int currFishDifficulty;
-    private int currBaitPower;
+    private int currFishDifficulty = 1;
+    private int currBaitPower = 1;
     private string currAnswer = "1234";
     private int currIndex = 0;
     private bool isFishing = false;
@@ -96,29 +96,46 @@ public class MinigameManager : MonoBehaviour
 
     public void AssignDifficulty(int _difficulty)
     {
+        currAnswer = "";
         if(_difficulty <= 0)
         {
             //easy prompt
+            for(int i = 0; i < 3; i++)
+            {
+                currAnswer += UnityEngine.Random.Range(1, 4);
+                QTETime = 7;
+            }
 
 
         }else if(_difficulty == 1)
         {
             //medium prompt
-
-
-        }else if(_difficulty == 2)
-        {
-            //hard prompt
+            for (int i = 0; i < 5; i++)
+            {
+                currAnswer += UnityEngine.Random.Range(1, 4);
+                QTETime = 5;
+            }
 
 
         }
+        else if(_difficulty == 2)
+        {
+            //hard prompt
+            for (int i = 0; i < 7; i++)
+            {
+                currAnswer += UnityEngine.Random.Range(1, 4);
+                QTETime = 7;
+            }
+
+        }
+        answerText.text = currAnswer;
     }
 
     public void StartFishing()
     {
         isFishing = true;
-        timer = QTETime;
         AssignDifficulty(currFishDifficulty-currBaitPower);
+        timer = QTETime;
 
         OnMinigameStart?.Invoke(this,EventArgs.Empty);
     }
