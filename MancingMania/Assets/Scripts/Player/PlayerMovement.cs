@@ -16,7 +16,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        MinigameManager.instance.OnMinigameStart += MinigameManager_OnMinigameStart;
+        MinigameManager.instance.OnMinigameStop += MinigameManager_OnMinigameStop;
         controller = gameObject.AddComponent<CharacterController>();
+    }
+
+    private void MinigameManager_OnMinigameStop(object sender, System.EventArgs e)
+    {
+
+        this.enabled = true;
+    }
+
+    private void MinigameManager_OnMinigameStart(object sender, System.EventArgs e)
+    {
+        
+        this.enabled = false;
     }
 
     void Update()
