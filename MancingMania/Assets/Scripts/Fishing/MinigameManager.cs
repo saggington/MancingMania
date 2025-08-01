@@ -8,16 +8,19 @@ public class MinigameManager : MonoBehaviour
     public event EventHandler OnMinigameStart;
     public event EventHandler OnMinigameStop;
     public static MinigameManager instance;
+    [SerializeField] private SwitchBait switchBait;
+
     [SerializeField] private TextMeshProUGUI inputText;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI answerText;
-    private string text = "";
 
+    private string text = "";
     private int currFishDifficulty = 1;
-    private int currBaitPower = 1;
-    private string currAnswer = "1234";
+    private int currBaitPower;
+    private string currAnswer;
     private int currIndex = 0;
     private bool isFishing = false;
+    private bool timerOn;
 
     [SerializeField] private float QTETime;
     private float timer;
@@ -28,9 +31,13 @@ public class MinigameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (timer <= 0)
+        //Ini yang bikin shop jadi bisa jalan
+        if (timer < 0)
         {
+            timerOn = false;
+            timer = 0;
             StopFishing();
+            Debug.Log("STOP");
         }
 
 
@@ -38,7 +45,7 @@ public class MinigameManager : MonoBehaviour
         timerText.text = timer.ToString();
 
 
-        if(isFishing )
+        if(isFishing)
         {
             timer -= Time.deltaTime;
 
@@ -133,7 +140,9 @@ public class MinigameManager : MonoBehaviour
 
     public void StartFishing()
     {
+        timerOn = true;
         isFishing = true;
+        GetBait();
         AssignDifficulty(currFishDifficulty-currBaitPower);
         timer = QTETime;
 
@@ -145,5 +154,11 @@ public class MinigameManager : MonoBehaviour
         isFishing = false;
 
         OnMinigameStop?.Invoke(this,EventArgs.Empty);
+    }
+
+    private void GetBait()
+    {
+        currBaitPower = switchBait.currBait;
+        Debug.Log(currBaitPower);
     }
 }

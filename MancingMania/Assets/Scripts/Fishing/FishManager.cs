@@ -9,8 +9,9 @@ public class FishManager : MonoBehaviour
 }
 [System.Serializable]
 public class fish
-{
+{ 
     public string name;
     public int fishPower;
     public int score;
+    public GameObject fishObject;
 }

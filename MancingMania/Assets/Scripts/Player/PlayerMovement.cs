@@ -18,12 +18,23 @@ public class PlayerMovement : MonoBehaviour
     {
         MinigameManager.instance.OnMinigameStart += MinigameManager_OnMinigameStart;
         MinigameManager.instance.OnMinigameStop += MinigameManager_OnMinigameStop;
+        ShopManager.instance.OnShopOpen += ShopManager_OnShopOpen;
+        ShopManager.instance.OnShopClose += ShopManager_OnShopClose;
         controller = gameObject.AddComponent<CharacterController>();
+    }
+
+    private void ShopManager_OnShopClose(object sender, System.EventArgs e)
+    {
+        this.enabled = true;
+    }
+
+    private void ShopManager_OnShopOpen(object sender, System.EventArgs e)
+    {
+        this.enabled = false;
     }
 
     private void MinigameManager_OnMinigameStop(object sender, System.EventArgs e)
     {
-
         this.enabled = true;
     }
 
