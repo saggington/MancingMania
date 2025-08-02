@@ -20,7 +20,6 @@ public class MinigameManager : MonoBehaviour
     private string currAnswer;
     private int currIndex = 0;
     private bool isFishing = false;
-    private bool timerOn;
 
     [SerializeField] private float QTETime;
     private float timer;
@@ -34,7 +33,6 @@ public class MinigameManager : MonoBehaviour
         //Ini yang bikin shop jadi bisa jalan
         if (timer < 0)
         {
-            timerOn = false;
             timer = 0;
             StopFishing();
             Debug.Log("STOP");
@@ -140,7 +138,6 @@ public class MinigameManager : MonoBehaviour
 
     public void StartFishing()
     {
-        timerOn = true;
         isFishing = true;
         GetBait();
         AssignDifficulty(currFishDifficulty-currBaitPower);
