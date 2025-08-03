@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
 
-    public int levelCount = 1;
+    public int levelCount = 3;
     public float remainingTime;
     public float bossTimeModifier = 0f;
 
@@ -61,7 +61,7 @@ public class LevelManager : MonoBehaviour
 
             remainingTime -= 1;
             timerText.text = remainingTime.ToString();
-            Debug.Log("Remaining time: " + remainingTime);
+            //Debug.Log("Remaining time: " + remainingTime);
             yield return new WaitForSeconds(1);
         }
     }
@@ -75,12 +75,13 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Level started");
 
-        remainingTime = 120 + bossTimeModifier;
-
         if (levelCount % 3 == 0)
         {
+            Debug.Log("Boss level started");
             OnBossLevelStart?.Invoke();
         }
+
+        remainingTime = 120 + bossTimeModifier;
 
         OnLevelStart?.Invoke();
         

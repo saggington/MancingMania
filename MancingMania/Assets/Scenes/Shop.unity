@@ -849,6 +849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   permanentScore: 0
   levelScore: 0
+  levelManager: {fileID: 891475171}
 --- !u!1 &584365016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1024259424}
-  levelCount: 1
+  levelCount: 3
   remainingTime: 120
   bossTimeModifier: 0
 --- !u!1 &896820817
@@ -1569,6 +1570,7 @@ Transform:
   - {fileID: 172413290}
   - {fileID: 891475170}
   - {fileID: 579311549}
+  - {fileID: 1524055079}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &915183274
@@ -2616,6 +2618,51 @@ RectTransform:
   m_AnchoredPosition: {x: -243, y: -13.5}
   m_SizeDelta: {x: 160, y: 127}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1524055078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1524055079}
+  - component: {fileID: 1524055080}
+  m_Layer: 0
+  m_Name: BossManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1524055079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524055078}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 896820818}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1524055080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524055078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af9755eb2f6d8244836108583a69732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelManager: {fileID: 891475171}
 --- !u!1 &1653949340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2957,6 +3004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9beeacb1bae19ad4f9c1b19e13f8fbbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossDifficultyModifier: 0
   switchBait: {fileID: 1188619346}
   inputText: {fileID: 843573971}
   timerText: {fileID: 584365017}

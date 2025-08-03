@@ -7,21 +7,39 @@ public class ScoreManager : MonoBehaviour
     public float permanentScore;
     public float levelScore;
 
+    [SerializeField] private LevelManager levelManager;
+
     private float scaling = 0;
     private float scoreCap = 120;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        //LevelManager.instance.OnLevelStart += ResetLevelScore;
+        //LevelManager.instance.OnLevelEnd += CheckScore;
+        //LevelManager.instance.OnBossLevelEnd += IncreaseScaling;
+    }
+
     private void OnEnable()
     {
-        LevelManager.instance.OnLevelStart += ResetLevelScore;
-        LevelManager.instance.OnLevelEnd += CheckScore;
-        LevelManager.instance.OnBossLevelEnd += IncreaseScaling;
+        levelManager.OnLevelStart += ResetLevelScore;
+        levelManager.OnLevelEnd += CheckScore;
+        levelManager.OnBossLevelEnd += IncreaseScaling;
     }
 
     private void OnDisable()
     {
-        LevelManager.instance.OnLevelStart -= ResetLevelScore;
-        LevelManager.instance.OnLevelEnd -= CheckScore;
-        LevelManager.instance.OnBossLevelEnd -= IncreaseScaling;
+        levelManager.OnLevelStart -= ResetLevelScore;
+        levelManager.OnLevelEnd -= CheckScore;
+        levelManager.OnBossLevelEnd -= IncreaseScaling;
     }
 
     private void ResetLevelScore()
@@ -46,9 +64,9 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void IncreaseLevelScore(float amount)
+    public void IncreaseLevelScore(float amount, float mult, float addition)
     {
-       levelScore += amount;
+       levelScore += (amount * mult) + addition;
     }
 
     private void IncreaseScoreCap()
