@@ -14,18 +14,17 @@ public class PlayerRaycast : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit;
 
-        if (Physics.Raycast(playerCamera.transform.position, transform.forward, out hit))
+        if (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit hit))
         {
             Debug.DrawRay(playerCamera.transform.position, transform.forward * 10, Color.red);
             //Debug.Log(hit.collider.gameObject.name);
 
-            if(hit.collider.gameObject.name == "Fish" && Input.GetKeyDown(KeyCode.E))
+            if (hit.collider.gameObject.name == "Fish" && Input.GetKeyDown(KeyCode.E))
             {
-                if(switchBait.currBait == 1)
+                if (switchBait.currBait == 1)
                 {
-                    if(switchBait.weakBaitAmount > 0)
+                    if (switchBait.weakBaitAmount > 0)
                     {
                         switchBait.weakBaitAmount -= 1;
                         Debug.Log("StartFishing");
@@ -56,12 +55,12 @@ public class PlayerRaycast : MonoBehaviour
                 }
 
             }
-            else if(hit.collider.gameObject.name == "Shop" && Input.GetKeyDown(KeyCode.E))
+            else if (hit.collider.gameObject.name == "Shop" && Input.GetKeyDown(KeyCode.E))
             {
                 shopManager.OpenShop();
             }
         }
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             shopManager.CloseShop();
         }

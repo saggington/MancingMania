@@ -12,6 +12,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private SwitchBait switchBait;
     [SerializeField] private GameObject ShopUI;
 
+
+
     [SerializeField] private int money;
     private void Awake()
     {
