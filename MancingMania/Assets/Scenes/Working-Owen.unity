@@ -1877,9 +1877,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currBait: 0
-  weakBaitAmount: 1
-  MediumBaitAmount: 0
-  StrongBaitAmount: 0
+  weakBaitAmount: 2
+  MediumBaitAmount: 2
+  StrongBaitAmount: 2
   weakText: {fileID: 1337161806}
   mediumText: {fileID: 8596590}
   strongText: {fileID: 166051928}
