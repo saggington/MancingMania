@@ -15,12 +15,14 @@ public class ScoreManager : MonoBehaviour
         instance = this;
         LevelManager.instance.OnLevelStart += ResetLevelScore;
         LevelManager.instance.OnLevelEnd += CheckScore;
+        LevelManager.instance.OnBossLevelEnd += IncreaseScaling;
     }
 
     private void OnDisable()
     {
         LevelManager.instance.OnLevelStart -= ResetLevelScore;
         LevelManager.instance.OnLevelEnd -= CheckScore;
+        LevelManager.instance.OnBossLevelEnd -= IncreaseScaling;
     }
 
     private void ResetLevelScore()
@@ -35,6 +37,8 @@ public class ScoreManager : MonoBehaviour
             permanentScore += levelScore + LevelManager.instance.remainingTime;
             IncreaseScoreCap();
 
+            //open shop
+
         }
         else
         {
@@ -42,9 +46,9 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void IncreaseScore(float amount)
+    public void IncreaseLevelScore(float amount)
     {
-        score += amount;
+       levelScore += amount;
     }
 
     private void IncreaseScoreCap()
@@ -54,7 +58,7 @@ public class ScoreManager : MonoBehaviour
 
     private void IncreaseScaling()
     {
-        scaling + 10 * LevelManager.instance.levelCount;
+        scaling =+ 10;
     }
 
 
