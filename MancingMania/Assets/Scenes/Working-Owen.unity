@@ -2592,6 +2592,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694872401}
   m_CullTransparentMesh: 1
+--- !u!1001 &1707280772
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.60914
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087116736143366370, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_Name
+      value: Ikan Barracuda
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087116736143366370, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_TagString
+      value: Fish
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
 --- !u!1 &1838535850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,6 +2994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9beeacb1bae19ad4f9c1b19e13f8fbbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossDifficultyModifier: 0
   switchBait: {fileID: 1188619346}
   playerCam: {fileID: 159542305}
   inputText: {fileID: 843573971}
@@ -3152,15 +3214,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5576508963935363777, guid: 72963498399704540bdba306068608fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6976317
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 5576508963935363777, guid: 72963498399704540bdba306068608fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.63
+      value: 5.01
       objectReference: {fileID: 0}
     - target: {fileID: 5576508963935363777, guid: 72963498399704540bdba306068608fe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.9531145
+      value: -12.58
       objectReference: {fileID: 0}
     - target: {fileID: 5576508963935363777, guid: 72963498399704540bdba306068608fe, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3219,3 +3281,4 @@ SceneRoots:
   - {fileID: 233758309}
   - {fileID: 1142291137}
   - {fileID: 262182847}
+  - {fileID: 1707280772}

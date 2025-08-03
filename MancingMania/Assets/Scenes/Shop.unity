@@ -2442,6 +2442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ikan Barracuda
       objectReference: {fileID: 0}
+    - target: {fileID: 9087116736143366370, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_TagString
+      value: Fish
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3006,6 +3010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDifficultyModifier: 0
   switchBait: {fileID: 1188619346}
+  playerCam: {fileID: 0}
   inputText: {fileID: 843573971}
   timerText: {fileID: 584365017}
   answerText: {fileID: 94507119}

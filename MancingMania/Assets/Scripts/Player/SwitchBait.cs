@@ -21,6 +21,7 @@ public class SwitchBait : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            Debug.Log("Weak Bait Selected");
             currBait = 1;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
