@@ -20,7 +20,7 @@ public class PlayerRaycast : MonoBehaviour
             Debug.DrawRay(playerCamera.transform.position, transform.forward * 10, Color.red);
             //Debug.Log(hit.collider.gameObject.name);
 
-            if (hit.collider.gameObject.name == "Fish" && Input.GetKeyDown(KeyCode.E))
+            if (hit.collider.CompareTag("Fish") && Input.GetKeyDown(KeyCode.E))
             {
                 if (switchBait.currBait == 1)
                 {

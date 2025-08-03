@@ -8,6 +8,14 @@ public class ShopManager : MonoBehaviour
     public event EventHandler OnShopClose;
     public static ShopManager instance;
 
+    private int weakBCost = 1;
+    private int mediumBCost = 2;
+    private int strongBCost = 3;
+
+    private int weakCounter = 0;
+    private int mediumCounter = 0;
+    private int strongCounter = 0;
+
     [SerializeField] private Button hookBuyButton;
     [SerializeField] private SwitchBait switchBait;
     [SerializeField] private GameObject ShopUI;
@@ -30,9 +38,18 @@ public class ShopManager : MonoBehaviour
 
     public void BuyWeakBait()
     {
-        if (money > 10)
+        if(weakCounter == 6)
         {
-            money -= 10;
+            weakBCost = 4;
+        }
+        if(weakCounter == 12)
+        {
+            weakBCost = 10;
+        }
+        if (money > weakBCost)
+        {
+            money -= weakBCost;
+            weakCounter += 1;
             switchBait.AddWeakBait();
         }
         else
@@ -41,9 +58,18 @@ public class ShopManager : MonoBehaviour
     }
     public void BuyMediumBait()
     {
-        if (money > 50)
+        if (mediumCounter == 4)
         {
-            money -= 50;
+            mediumBCost = 8;
+        }
+        if (mediumCounter == 8)
+        {
+            mediumBCost = 20;
+        }
+        if (money > mediumBCost)
+        {
+            money -= mediumBCost;
+            mediumCounter += 1;
             switchBait.AddMediumBait();
         }
         else
@@ -51,12 +77,26 @@ public class ShopManager : MonoBehaviour
     }
     public void BuyStrongBait()
     {
-        if (money > 100)
+        if(strongCounter == 2)
         {
-            money -= 100;
+            strongBCost = 12;
+        }
+        if (strongCounter == 4)
+        {
+            strongBCost = 30;
+        }
+        if (money > strongBCost)
+        {
+            money -= strongBCost;
+            strongCounter += 1;
             switchBait.AddStrongBait();
         }
         else
             Debug.Log("Not enough money");
+    }
+
+    public void BuyHook()
+    {
+
     }
 }
