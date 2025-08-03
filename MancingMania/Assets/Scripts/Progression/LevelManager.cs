@@ -16,7 +16,25 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     public int levelCount = 1;
-    public float remainingTime = 120;
+    public float remainingTime;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        timerText.text = remainingTime.ToString();
+        StartLevel();
+    }
 
     private void OnEnable()
     {
@@ -30,22 +48,21 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator StartTimer()
     {
+        Debug.Log("Timer started");
 
-        remainingTime -= 1;
-        timerText.text = remainingTime.ToString();
-
-        if(remainingTime <= 0)
+        for(float i = remainingTime; i >= 0; i--)
         {
-            if (levelCount % 3 == 0)
+            if (remainingTime <= 0)
             {
-                OnBossLevelEnd?.Invoke();
+                EndLevel();
+                yield break;
             }
 
-            OnLevelEnd?.Invoke();
-
+            remainingTime -= 1;
+            timerText.text = remainingTime.ToString();
+            Debug.Log("Remaining time: " + remainingTime);
+            yield return new WaitForSeconds(1);
         }
-
-        yield return new WaitForSeconds(1);
     }
 
     private void IncrementLevel()
@@ -55,6 +72,8 @@ public class LevelManager : MonoBehaviour
 
     public void StartLevel()
     {
+        Debug.Log("Level started");
+
         remainingTime = 120;
 
         OnLevelStart?.Invoke();
@@ -68,6 +87,8 @@ public class LevelManager : MonoBehaviour
 
     public void EndLevel()
     {
+        Debug.Log("Level ended");
+
         if (timeRoutine != null)
         {
             StopCoroutine(timeRoutine);

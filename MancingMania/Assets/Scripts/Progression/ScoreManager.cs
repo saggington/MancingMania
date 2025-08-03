@@ -12,7 +12,6 @@ public class ScoreManager : MonoBehaviour
 
     private void OnEnable()
     {
-        instance = this;
         LevelManager.instance.OnLevelStart += ResetLevelScore;
         LevelManager.instance.OnLevelEnd += CheckScore;
         LevelManager.instance.OnBossLevelEnd += IncreaseScaling;
