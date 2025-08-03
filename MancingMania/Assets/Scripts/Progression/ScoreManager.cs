@@ -33,7 +33,8 @@ public class ScoreManager : MonoBehaviour
     {
         if (levelScore >= scoreCap)
         {
-            permanentScore += levelScore + LevelManager.instance.remainingTime;
+            //convert to money
+            ShopManager.instance.money += levelScore + LevelManager.instance.remainingTime;
             IncreaseScoreCap();
 
             //open shop - win

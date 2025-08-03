@@ -7,6 +7,10 @@ public class MinigameManager : MonoBehaviour
 {
     public event EventHandler OnMinigameStart;
     public event EventHandler OnMinigameStop;
+
+    public event Action OnFishCaught;
+    public event Action OnFishLost;
+
     public static MinigameManager instance;
     [SerializeField] private SwitchBait switchBait;
 
@@ -66,6 +70,7 @@ public class MinigameManager : MonoBehaviour
             if (text.Length == currAnswer.Length)
             {
                 Debug.Log("Fish Caught");
+                OnFishCaught?.Invoke();
                 StopFishing();
             }
 
@@ -89,6 +94,7 @@ public class MinigameManager : MonoBehaviour
         }else
         {
             Debug.Log("Wrong");
+            OnFishLost?.Invoke();
             StopFishing();
         }
     }
