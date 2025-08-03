@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
 
     public int levelCount = 1;
     public float remainingTime;
+    public float bossTimeModifier = 0f;
 
     private void Awake()
     {
@@ -74,14 +75,15 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Level started");
 
-        remainingTime = 120;
-
-        OnLevelStart?.Invoke();
+        remainingTime = 120 + bossTimeModifier;
 
         if (levelCount % 3 == 0)
         {
             OnBossLevelStart?.Invoke();
         }
+
+        OnLevelStart?.Invoke();
+        
         timeRoutine = StartCoroutine(StartTimer());
     }
 
