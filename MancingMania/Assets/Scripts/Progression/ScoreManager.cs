@@ -36,12 +36,12 @@ public class ScoreManager : MonoBehaviour
             permanentScore += levelScore + LevelManager.instance.remainingTime;
             IncreaseScoreCap();
 
-            //open shop
+            //open shop - win
 
         }
         else
         {
-            //return to main menu
+            //return to main menu - lose
         }
     }
 
