@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TrophyTine : HookBase
 {
-    public override string hookName = "Trophy Tine";
+    public override string hookName => "Trophy Tine";
 
     public override float HookEffect(fish fishe)
     {
@@ -10,6 +10,6 @@ public class TrophyTine : HookBase
         {
             return 2f;
         }
-        return 1f;
+        return 1f; 
     }
 }

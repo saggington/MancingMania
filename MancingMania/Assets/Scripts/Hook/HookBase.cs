@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class HookBase
 {
-    public string hookName;
+    public virtual string hookName => "Regular Hook";
     public float hookPrice = 40f;
 
     public virtual float HookEffect(fish fishe)
