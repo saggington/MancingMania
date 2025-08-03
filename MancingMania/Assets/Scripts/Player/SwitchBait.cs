@@ -13,6 +13,12 @@ public class SwitchBait : MonoBehaviour
     [SerializeField] private TextMeshProUGUI strongText;
     void Update()
     {
+        weakText.text = weakBaitAmount.ToString();
+        mediumText.text = MediumBaitAmount.ToString();
+        strongText.text = StrongBaitAmount.ToString();
+
+
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currBait = 1;
@@ -29,20 +35,14 @@ public class SwitchBait : MonoBehaviour
     public void AddWeakBait()
     {
         weakBaitAmount++;
-        weakText.text = weakBaitAmount.ToString();
     }
     public void AddMediumBait()
     {
         MediumBaitAmount++;
-        mediumText.text = MediumBaitAmount.ToString();
     }
     public void AddStrongBait()
     {
         StrongBaitAmount++;
-        strongText.text = StrongBaitAmount.ToString();
     }
-    public void UseBait()
-    {
 
-    }
 }
