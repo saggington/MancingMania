@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
@@ -8,16 +9,22 @@ public class LevelManager : MonoBehaviour
     public event Action OnLevelEnd;
 
     [SerializeField] private TextMeshProUGUI timerText;
-
-    private float remainingTime = 120;
+    private Coroutine timeRoutine;
 
     public static LevelManager instance;
 
+    public int levelCount = 1;
+    public float remainingTime = 120;
+
     private IEnumerator StartTimer()
     {
+        OnLevelStart?.Invoke();
+
         remainingTime = 120; 
 
         remainingTime -= 1;
+        timerText.text = remainingTime.ToString();
+
         yield return new WaitForSeconds(1);
 
         if(remainingTime <= 0)
@@ -28,6 +35,18 @@ public class LevelManager : MonoBehaviour
 
     public void StartLevel()
     {
-        StartCoroutine(StartTimer());
+        timeRoutine = StartCoroutine(StartTimer());
     }
+
+    public void EndLevel()
+    {
+        if (timeRoutine != null)
+        {
+            StopCoroutine(timeRoutine);
+            timeRoutine = null;
+        }
+        OnLevelEnd?.Invoke();
+    }
+
+
 }
