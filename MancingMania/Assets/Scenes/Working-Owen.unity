@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 172413289}
   m_Layer: 0
   m_Name: FishManager
-  m_TagString: Untagged
+  m_TagString: FishManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -808,6 +808,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &445501513
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.59294367
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.0372467
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869381455890848532, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087116736143366370, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_Name
+      value: Ikan Barracuda
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087116736143366370, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      propertyPath: m_TagString
+      value: Fish
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9087116736143366370, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1196839230}
+  m_SourcePrefab: {fileID: 100100000, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
 --- !u!1 &584365016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,7 +1816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1142291134
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1883,6 +1947,32 @@ MonoBehaviour:
   weakText: {fileID: 1337161806}
   mediumText: {fileID: 8596590}
   strongText: {fileID: 166051928}
+--- !u!1 &1196839227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9087116736143366370, guid: f11351c5647707c4ca71659aceb6d3ea, type: 3}
+  m_PrefabInstance: {fileID: 445501513}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1196839230
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196839227}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5005509, y: 1, z: 4.857128}
+  m_Center: {x: 0.051301777, y: 0, z: 0.17943287}
 --- !u!1 &1289523288
 GameObject:
   m_ObjectHideFlags: 0
@@ -3219,3 +3309,4 @@ SceneRoots:
   - {fileID: 233758309}
   - {fileID: 1142291137}
   - {fileID: 262182847}
+  - {fileID: 445501513}
