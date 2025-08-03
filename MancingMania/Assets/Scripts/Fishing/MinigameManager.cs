@@ -14,6 +14,7 @@ public class MinigameManager : MonoBehaviour
     public static MinigameManager instance;
     public int bossDifficultyModifier = 0;
     [SerializeField] private SwitchBait switchBait;
+    [SerializeField] private Camera playerCam;
 
     [SerializeField] private TextMeshProUGUI inputText;
     [SerializeField] private TextMeshProUGUI timerText;
@@ -82,10 +83,10 @@ public class MinigameManager : MonoBehaviour
     private void AddInput(string _input)
     {
         text += _input;
-        CheckInput(_input);
+        CheckInput();
     }
 
-    private void CheckInput(string _input)
+    private void CheckInput()
     {
         Debug.Log(text.Length);
         if (text[currIndex] == currAnswer[currIndex])
@@ -149,6 +150,7 @@ public class MinigameManager : MonoBehaviour
         GetBait();
         AssignDifficulty(currFishDifficulty-currBaitPower);
         timer = QTETime;
+        playerCam.fieldOfView = 30f;
 
         OnMinigameStart?.Invoke(this,EventArgs.Empty);
     }
@@ -156,6 +158,8 @@ public class MinigameManager : MonoBehaviour
     {
         ResetText();
         isFishing = false;
+        playerCam.fieldOfView = 60f;
+
 
         OnMinigameStop?.Invoke(this,EventArgs.Empty);
     }
