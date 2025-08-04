@@ -15,10 +15,13 @@ public class MinigameManager : MonoBehaviour
     public int bossDifficultyModifier = 0;
     [SerializeField] private SwitchBait switchBait;
     [SerializeField] private Camera playerCam;
+    [SerializeField] private GameObject gameplayUI;
 
     [SerializeField] private TextMeshProUGUI inputText;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI answerText;
+
+    private string answer = "AWDS";
 
     private string text = "";
     private int currFishDifficulty = 1;
@@ -115,8 +118,9 @@ public class MinigameManager : MonoBehaviour
             //easy prompt
             for(int i = 0; i < 3 + bossDifficultyModifier; i++)
             {
-                currAnswer += UnityEngine.Random.Range(1, 4);
-                QTETime = 7;
+                //currAnswer += UnityEngine.Random.Range(1, 4);
+                currAnswer += answer[UnityEngine.Random.Range(1, answer.Length)];
+                QTETime = 3;
             }
 
 
@@ -125,8 +129,9 @@ public class MinigameManager : MonoBehaviour
             //medium prompt
             for (int i = 0; i < 5 + bossDifficultyModifier; i++)
             {
-                currAnswer += UnityEngine.Random.Range(1, 4);
-                QTETime = 5;
+                //currAnswer += UnityEngine.Random.Range(1, 4);
+                currAnswer += answer[UnityEngine.Random.Range(1, answer.Length)];
+                QTETime = 3;
             }
 
 
@@ -136,8 +141,9 @@ public class MinigameManager : MonoBehaviour
             //hard prompt
             for (int i = 0; i < 7 + bossDifficultyModifier; i++)
             {
-                currAnswer += UnityEngine.Random.Range(1, 4);
-                QTETime = 7;
+                //currAnswer += UnityEngine.Random.Range(1, 4);
+                currAnswer += answer[UnityEngine.Random.Range(1, answer.Length)];
+                QTETime = 3;
             }
 
         }
@@ -146,6 +152,7 @@ public class MinigameManager : MonoBehaviour
 
     public void StartFishing()
     {
+        gameplayUI.SetActive(false);
         isFishing = true;
         GetBait();
         AssignDifficulty(currFishDifficulty-currBaitPower);
@@ -154,8 +161,16 @@ public class MinigameManager : MonoBehaviour
 
         OnMinigameStart?.Invoke(this,EventArgs.Empty);
     }
+
+    public void GetFishPower(int fishPower)
+    {
+        currFishDifficulty = fishPower;
+        //Debug.Log("Fish Power: " + currFishDifficulty);
+    }
+
     private void StopFishing()
     {
+        gameplayUI.SetActive(true);
         ResetText();
         isFishing = false;
         playerCam.fieldOfView = 60f;

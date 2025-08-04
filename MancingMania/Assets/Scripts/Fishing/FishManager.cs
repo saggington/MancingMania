@@ -8,7 +8,7 @@ public class FishManager : MonoBehaviour
 
 }
 [System.Serializable]
-public class fish
+public class fish : MonoBehaviour
 { 
     public string name;
     public int fishPower;

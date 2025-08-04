@@ -54,6 +54,7 @@ public class PlayerRaycast : MonoBehaviour
                     Debug.Log("Not enough bait");
                 }
 
+
             }
             else if (hit.collider.gameObject.name == "Shop" && Input.GetKeyDown(KeyCode.E))
             {

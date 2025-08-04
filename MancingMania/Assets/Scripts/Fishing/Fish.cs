@@ -8,7 +8,16 @@ public class Fish : fish
     {
         fishManager = GameObject.FindGameObjectWithTag("FishManager").GetComponent<FishManager>();
     }
-    
 
+    void OnMouseDown()
+    {
+        MinigameManager minigameManager = MinigameManager.instance;
+
+        if(minigameManager != null)
+        {
+            //minigameManager.GetFishPower(fishPower);
+            minigameManager.StartFishing();
+        }
+    }
 
 }

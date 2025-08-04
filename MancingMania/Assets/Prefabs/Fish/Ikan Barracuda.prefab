@@ -326,9 +326,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1869381455890848532}
   - component: {fileID: 4417234967777879695}
+  - component: {fileID: 1026563416687196788}
+  - component: {fileID: 206309957839756311}
   m_Layer: 0
   m_Name: Ikan Barracuda
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -372,3 +374,40 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &1026563416687196788
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9087116736143366370}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 4.8392086}
+  m_Center: {x: 0, y: 0, z: -0.032111764}
+--- !u!114 &206309957839756311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9087116736143366370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d7554c0f5b68149a1cc578478de15d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Barracuda
+  fishPower: 3
+  score: 15
+  fishObject: {fileID: 9087116736143366370}
