@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     public float levelScore;
 
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     private float scaling = 0;
     private float scoreCap = 120;
@@ -59,15 +62,17 @@ public class ScoreManager : MonoBehaviour
             ShopManager.instance.OpenShop();
 
         }
-        else
+        else if (levelManager.remainingTime == 0)
         {
-            //return to main menu - lose
+            SceneManager.LoadScene(0);
         }
     }
 
-    public void IncreaseLevelScore(float amount, float mult, float addition)
+    public void IncreaseLevelScore(float amount)
     {
-       levelScore += (amount * mult) + addition;
+       levelScore += (amount);
+        scoreText.text = "Score: " + levelScore.ToString();
+        CheckScore();
     }
 
     private void IncreaseScoreCap()

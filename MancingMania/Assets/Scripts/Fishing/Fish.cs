@@ -15,7 +15,7 @@ public class Fish : fish
 
         if(minigameManager != null)
         {
-            //minigameManager.GetFishPower(fishPower);
+            minigameManager.GetFishPower(fishPower);
             minigameManager.StartFishing();
         }
     }

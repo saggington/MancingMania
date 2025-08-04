@@ -16,6 +16,7 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private SwitchBait switchBait;
     [SerializeField] private Camera playerCam;
     [SerializeField] private GameObject gameplayUI;
+    [SerializeField] private GameObject minigameUI;
 
     [SerializeField] private TextMeshProUGUI inputText;
     [SerializeField] private TextMeshProUGUI timerText;
@@ -25,7 +26,8 @@ public class MinigameManager : MonoBehaviour
 
     private string text = "";
     private int currFishDifficulty = 1;
-    private int currBaitPower;
+    private Fish currBaitPower;
+    private int currbait = 1;
     private string currAnswer;
     private int currIndex = 0;
     private bool isFishing = false;
@@ -37,6 +39,13 @@ public class MinigameManager : MonoBehaviour
     {
         instance = this;
     }
+
+    private void Start()
+    {
+        minigameUI.SetActive(false);
+
+    }
+
     private void Update()
     {
         //Ini yang bikin shop jadi bisa jalan
@@ -51,31 +60,37 @@ public class MinigameManager : MonoBehaviour
         inputText.text = text;
         timerText.text = timer.ToString();
 
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    ShopManager.instance.OpenShop();
+        //}
 
-        if(isFishing)
+
+        if (isFishing)
         {
             timer -= Time.deltaTime;
 
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                AddInput("1");
+                AddInput("A");
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                AddInput("2");
+                AddInput("W");
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.D))
             {
-                AddInput("3");
+                AddInput("D");
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.S))
             {
-                AddInput("4");
+                AddInput("S");
             }
             if (text.Length == currAnswer.Length)
             {
                 Debug.Log("Fish Caught");
                 OnFishCaught?.Invoke();
+                ScoreManager.instance.IncreaseLevelScore(40);
                 StopFishing();
             }
 
@@ -148,14 +163,16 @@ public class MinigameManager : MonoBehaviour
 
         }
         answerText.text = currAnswer;
+        Debug.Log("Difficulty Assigned: " + currAnswer);
     }
 
     public void StartFishing()
     {
         gameplayUI.SetActive(false);
+        minigameUI.SetActive(true);
         isFishing = true;
         GetBait();
-        AssignDifficulty(currFishDifficulty-currBaitPower);
+        AssignDifficulty(currFishDifficulty-currbait);
         timer = QTETime;
         playerCam.fieldOfView = 30f;
 
@@ -171,6 +188,7 @@ public class MinigameManager : MonoBehaviour
     private void StopFishing()
     {
         gameplayUI.SetActive(true);
+        minigameUI.SetActive(false);
         ResetText();
         isFishing = false;
         playerCam.fieldOfView = 60f;
@@ -181,7 +199,8 @@ public class MinigameManager : MonoBehaviour
 
     private void GetBait()
     {
-        currBaitPower = switchBait.currBait;
+        switchBait.currBait = currbait;
+        //currBaitPower.fishPower = switchBait.currBait;
         Debug.Log(currBaitPower);
     }
 }

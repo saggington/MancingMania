@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button hookBuyButton;
     [SerializeField] private SwitchBait switchBait;
     [SerializeField] private GameObject ShopUI;
+    [SerializeField] private GameObject GameplayUI;
+    [SerializeField] private TextMeshProUGUI coinText;
+    [SerializeField] private TextMeshProUGUI weakBaitText;
+    [SerializeField] private TextMeshProUGUI mediumBaitText;
+    [SerializeField] private TextMeshProUGUI strongBaitText;
 
     public float money;
     private void Awake()
@@ -28,11 +34,14 @@ public class ShopManager : MonoBehaviour
     public void OpenShop()
     {
         ShopUI.SetActive(true);
+        GameplayUI.SetActive(false);
+        coinText.text = "Coins:" + money.ToString();
         OnShopOpen?.Invoke(this, EventArgs.Empty);
     }
     public void CloseShop()
     {
         ShopUI.SetActive(false);
+        GameplayUI.SetActive(true);
         OnShopClose?.Invoke(this, EventArgs.Empty);
     }
 
@@ -55,6 +64,8 @@ public class ShopManager : MonoBehaviour
         else
             Debug.Log("Not enough money");
 
+        weakBaitText.text = "Price: " + weakCounter.ToString();
+
     }
     public void BuyMediumBait()
     {
@@ -74,6 +85,8 @@ public class ShopManager : MonoBehaviour
         }
         else
             Debug.Log("Not enough money");
+
+        mediumBaitText.text = "Price: " + mediumBCost.ToString();
     }
     public void BuyStrongBait()
     {
@@ -93,6 +106,8 @@ public class ShopManager : MonoBehaviour
         }
         else
             Debug.Log("Not enough money");
+
+        strongBaitText.text = "Price: " + strongBCost.ToString();
     }
 
     public void BuyHook()

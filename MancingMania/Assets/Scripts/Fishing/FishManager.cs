@@ -12,6 +12,6 @@ public class fish : MonoBehaviour
 { 
     public string name;
     public int fishPower;
-    public int score;
+    public float score;
     public GameObject fishObject;
 }
