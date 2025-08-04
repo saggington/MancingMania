@@ -12,6 +12,7 @@ public class MinigameManager : MonoBehaviour
     public event Action OnFishLost;
 
     public static MinigameManager instance;
+    public int bossDifficultyModifier = 0;
     [SerializeField] private SwitchBait switchBait;
     [SerializeField] private Camera playerCam;
 
@@ -112,7 +113,7 @@ public class MinigameManager : MonoBehaviour
         if(_difficulty <= 0)
         {
             //easy prompt
-            for(int i = 0; i < 3; i++)
+            for(int i = 0; i < 3 + bossDifficultyModifier; i++)
             {
                 currAnswer += UnityEngine.Random.Range(1, 4);
                 QTETime = 7;
@@ -122,7 +123,7 @@ public class MinigameManager : MonoBehaviour
         }else if(_difficulty == 1)
         {
             //medium prompt
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 5 + bossDifficultyModifier; i++)
             {
                 currAnswer += UnityEngine.Random.Range(1, 4);
                 QTETime = 5;
@@ -133,7 +134,7 @@ public class MinigameManager : MonoBehaviour
         else if(_difficulty == 2)
         {
             //hard prompt
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 7 + bossDifficultyModifier; i++)
             {
                 currAnswer += UnityEngine.Random.Range(1, 4);
                 QTETime = 7;
