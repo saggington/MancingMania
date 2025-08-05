@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     public event Action OnBossLevelEnd;
 
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private GameObject gameplayUI;
     private Coroutine timeRoutine;
 
     public static LevelManager instance;
@@ -18,6 +19,7 @@ public class LevelManager : MonoBehaviour
     public int levelCount = 3;
     public float remainingTime;
     public float bossTimeModifier = 0f;
+    public bool levelRunning = false;
 
     private void Awake()
     {
@@ -40,11 +42,25 @@ public class LevelManager : MonoBehaviour
     private void OnEnable()
     {
         OnLevelEnd += IncrementLevel;
+        OnLevelEnd += CloseGameplayUI;
+        OnLevelStart += OpenGameplayUI;
     }
 
     private void OnDisable()
     {
         OnLevelEnd -= IncrementLevel;
+        OnLevelEnd -= CloseGameplayUI;
+        OnLevelStart -= OpenGameplayUI;
+    }
+
+    private void CloseGameplayUI()
+    {
+        gameplayUI.SetActive(false);
+    }
+
+    private void OpenGameplayUI()
+    {
+        gameplayUI.SetActive(true);
     }
 
     private IEnumerator StartTimer()
@@ -53,7 +69,7 @@ public class LevelManager : MonoBehaviour
 
         for(float i = remainingTime; i >= 0; i--)
         {
-            if (remainingTime <= 0)
+            if (remainingTime <= 0 && levelRunning)
             {
                 EndLevel();
                 yield break;
@@ -74,6 +90,8 @@ public class LevelManager : MonoBehaviour
     public void StartLevel()
     {
         Debug.Log("Level started");
+        levelRunning = true;
+        //gameplayUI.SetActive(true);
 
         if (levelCount % 3 == 0)
         {
@@ -90,7 +108,10 @@ public class LevelManager : MonoBehaviour
 
     public void EndLevel()
     {
-        Debug.Log("Level ended");
+        //Debug.Log("Level ended");
+        gameplayUI?.SetActive(false);
+        remainingTime = 0;
+        levelRunning = false;
 
         if (timeRoutine != null)
         {

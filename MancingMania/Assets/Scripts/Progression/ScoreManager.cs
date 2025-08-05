@@ -59,7 +59,11 @@ public class ScoreManager : MonoBehaviour
             IncreaseScoreCap();
 
             //open shop - win
-            ShopManager.instance.OpenShop();
+            if (levelManager.levelRunning)
+            {
+                ShopManager.instance.OpenShop();
+                levelManager.EndLevel();
+            }
 
         }
         else if (levelManager.remainingTime == 0)
